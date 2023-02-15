@@ -27,7 +27,15 @@ type GLTFResult = GLTF & {
   };
 };
 
-export function Paddle({ args = [0.5, 8, 8.5] }) {
+export interface PaddleProps {
+  args?: number[] | undefined;
+  handleScoreChange: (calculationKey: string) => void;
+}
+
+export const Paddle: React.FC<PaddleProps> = ({
+  args = [0.5, 8, 8.5],
+  handleScoreChange
+}) => {
   const { nodes, materials } = useGLTF(
     '/scene-transformed.glb'
   ) as unknown as GLTFResult;
@@ -36,7 +44,7 @@ export function Paddle({ args = [0.5, 8, 8.5] }) {
     mass: 0,
     rotation: [0, 0, Math.PI / 2],
     onCollide: () => {
-      console.log('hit');
+      handleScoreChange('+');
     }
   }));
   useFrame((state) => {
@@ -69,6 +77,6 @@ export function Paddle({ args = [0.5, 8, 8.5] }) {
       </group>
     </group>
   );
-}
+};
 
 useGLTF.preload('/scene-transformed.glb');
