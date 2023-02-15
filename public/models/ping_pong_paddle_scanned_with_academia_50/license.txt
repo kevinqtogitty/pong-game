@@ -1,0 +1,11 @@
+Model Information:
+* title:	Ping pong Paddle scanned with ACADEMIA 50
+* source:	https://sketchfab.com/3d-models/ping-pong-paddle-scanned-with-academia-50-43565fda2deb470fbe86e5561a2e1e4e
+* author:	Creaform 3D (https://sketchfab.com/creaform)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Ping pong Paddle scanned with ACADEMIA 50" (https://sketchfab.com/3d-models/ping-pong-paddle-scanned-with-academia-50-43565fda2deb470fbe86e5561a2e1e4e) by Creaform 3D (https://sketchfab.com/creaform) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
