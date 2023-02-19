@@ -50,11 +50,7 @@ export const Paddle: React.FC<PaddleProps> = ({ handleScoreChange }) => {
 
   useFrame(({ viewport, mouse }) => {
     api.position.set((mouse.x * viewport.width) / 2, mouse.y * 20, 0);
-    api.rotation.set(
-      isGameOver ? Math.PI / 4 : 0,
-      0,
-      -Math.PI / 2 + mouse.x / 2
-    );
+    api.rotation.set(0, 0, -Math.PI / 2 + mouse.x / 2);
   });
 
   const [ref, api] = useBox(() => ({
