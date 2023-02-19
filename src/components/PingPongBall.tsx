@@ -1,6 +1,6 @@
 import { usePlane, useSphere } from '@react-three/cannon';
 import { useThree } from '@react-three/fiber';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useMainStore } from '../state/mainStore';
 import { PaddleProps } from './Paddle';
 interface PingPongBallProps extends PaddleProps {}
