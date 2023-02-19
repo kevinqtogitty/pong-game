@@ -1,18 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
-import {
-  Center,
-  Environment,
-  Float,
-  Html,
-  Lightformer,
-  OrbitControls,
-  Stars,
-  Text3D,
-  useTexture
-} from '@react-three/drei';
+import React from 'react';
+import { Stars } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
 import { Paddle } from './components/Paddle';
-import { Debug, Physics } from '@react-three/cannon';
+import { Physics } from '@react-three/cannon';
 import { PingPongBall } from './components/PingPongBall';
 import { useMainStore } from './state/mainStore';
 import Score from './components/Score';
