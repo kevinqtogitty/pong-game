@@ -1,5 +1,5 @@
 import { usePlane, useSphere } from '@react-three/cannon';
-import { useFrame, useThree } from '@react-three/fiber';
+import { useThree } from '@react-three/fiber';
 import React, { useEffect, useState } from 'react';
 import { useMainStore } from '../state/mainStore';
 import { PaddleProps } from './Paddle';
@@ -42,7 +42,7 @@ export const PingPongBall: React.FC<PingPongBallProps> = ({
 
   const [ref, api] = useSphere(() => ({
     args: [1.5],
-    mass: 50,
+    mass: 100,
     position: [0, -viewport.height - viewport.height / 2, 0]
   }));
 
