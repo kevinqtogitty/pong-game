@@ -16,7 +16,7 @@ const Restart = () => {
     ref.current.position.y = THREE.MathUtils.lerp(
       ref.current.position.y,
       hasStarted ? -40 : viewport.height * 1.2,
-      0.05
+      hasStarted ? 0.02 : 0.05
     );
   });
 
