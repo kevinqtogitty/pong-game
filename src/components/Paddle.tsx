@@ -12,7 +12,7 @@ import React, { useEffect, useRef } from 'react';
 import { useGLTF } from '@react-three/drei';
 import { GLTF } from 'three-stdlib';
 import { useFrame } from '@react-three/fiber';
-import { useBox, usePlane } from '@react-three/cannon';
+import { useBox } from '@react-three/cannon';
 import { useMainStore } from '../state/mainStore';
 import pingSound from '../resources/ping.mp3';
 import { clamp } from 'three/src/math/MathUtils';
