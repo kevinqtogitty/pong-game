@@ -9,8 +9,6 @@ interface MainStore {
   setIsGameOver: (isOver: boolean) => void;
   score: number;
   setScore: (calculationKey: string) => void;
-  tries: number;
-  setTries: () => void;
 }
 
 const useMainStore = create<MainStore>((set) => ({
@@ -26,9 +24,7 @@ const useMainStore = create<MainStore>((set) => ({
     calculationKey === '+'
       ? set(({ score }) => ({ score: score + 1 }))
       : set({ score: 0 });
-  },
-  tries: 0,
-  setTries: () => set(({ tries }) => ({ tries: tries + 1 }))
+  }
 }));
 
 export { useMainStore };
