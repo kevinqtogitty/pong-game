@@ -8,11 +8,14 @@ Title: Ping pong Paddle scanned with ACADEMIA 50
 */
 
 import * as THREE from 'three';
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useGLTF } from '@react-three/drei';
 import { GLTF } from 'three-stdlib';
 import { useFrame } from '@react-three/fiber';
 import { useBox, usePlane } from '@react-three/cannon';
+import { useMainStore } from '../state/mainStore';
+import pingSound from '../resources/ping.mp3';
+import { clamp } from 'three/src/math/MathUtils';
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -32,27 +35,40 @@ export interface PaddleProps {
   handleScoreChange: (calculationKey: string) => void;
 }
 
-export const Paddle: React.FC<PaddleProps> = ({
-  args = [0.5, 8, 8.5],
-  handleScoreChange
-}) => {
+export const Paddle: React.FC<PaddleProps> = ({ handleScoreChange }) => {
   const { nodes, materials } = useGLTF(
     '/scene-transformed.glb'
   ) as unknown as GLTFResult;
+  const { isGameOver } = useMainStore();
+  const ping = new Audio(pingSound);
+
+  const pongSound = (velocity: number) => {
+    console.log(velocity);
+    ping.volume = clamp(velocity / 50, 0.1, 1);
+    ping.play();
+  };
+
+  useFrame(({ viewport, mouse }) => {
+    api.position.set((mouse.x * viewport.width) / 2, mouse.y * 20, 0);
+    api.rotation.set(
+      isGameOver ? Math.PI / 4 : 0,
+      0,
+      -Math.PI / 2 + mouse.x / 2
+    );
+  });
+
   const [ref, api] = useBox(() => ({
-    args,
+    args: [0.5, 8, 8.5],
     mass: 0,
     rotation: [0, 0, Math.PI / 2],
-    onCollide: () => {
+    onCollide: (e) => {
       handleScoreChange('+');
+      pongSound(e.contact.impactVelocity);
     }
   }));
-  useFrame((state) => {
-    api.position.set((state.mouse.x * state.viewport.width) / 2, 0, 0);
-    api.rotation.set(0, 0, -Math.PI / 2 + state.mouse.x / 2);
-  });
+
   return (
-    <group dispose={null} scale={0.05} ref={ref}>
+    <group dispose={null} scale={0.05} ref={ref} castShadow receiveShadow>
       <group position={[-1, 0, 180]} rotation={[Math.PI / 2, 0, Math.PI / 2]}>
         <mesh
           geometry={nodes.Object_2.geometry}
