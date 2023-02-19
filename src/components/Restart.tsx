@@ -12,7 +12,7 @@ const Restart = () => {
   const { hasStarted } = useMainStore();
 
   useFrame(() => {
-    ref.current.position.x = viewport.width / 2.5;
+    ref.current.position.x = viewport.width / 2;
     ref.current.position.y = THREE.MathUtils.lerp(
       ref.current.position.y,
       hasStarted ? -40 : viewport.height * 1.2,
@@ -28,8 +28,8 @@ const Restart = () => {
           bevelEnabled
           bevelSize={0.05}
           letterSpacing={0.1}
-          size={1}
-          scale={1.5}
+          size={1.2}
+          scale={1}
           position={[-viewport.width + viewport.width / 5, -viewport.height, 0]}
           rotation={[-Math.PI / 5, 0, 0]}
         >
