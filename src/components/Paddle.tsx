@@ -39,11 +39,9 @@ export const Paddle: React.FC<PaddleProps> = ({ handleScoreChange }) => {
   const { nodes, materials } = useGLTF(
     '/scene-transformed.glb'
   ) as unknown as GLTFResult;
-  const { isGameOver } = useMainStore();
   const ping = new Audio(pingSound);
 
   const pongSound = (velocity: number) => {
-    console.log(velocity);
     ping.volume = clamp(velocity / 50, 0.1, 1);
     ping.play();
   };
