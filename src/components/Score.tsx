@@ -1,4 +1,4 @@
-import { Center, Float, Text3D, useTexture } from '@react-three/drei';
+import { Float, Text3D, useTexture } from '@react-three/drei';
 import React from 'react';
 import { useMainStore } from '../state/mainStore';
 
