@@ -6,16 +6,10 @@ import { PaddleProps } from './Paddle';
 interface PingPongBallProps extends PaddleProps {}
 
 export const PingPongBall: React.FC<PingPongBallProps> = ({
-  args = [1.5, 512, 512],
   handleScoreChange
 }) => {
-  const {
-    setTries,
-    setIsResettable,
-    isResettable,
-    setIsGameOver,
-    setHasStarted
-  } = useMainStore();
+  const { setIsResettable, isResettable, setIsGameOver, setHasStarted } =
+    useMainStore();
 
   const { viewport } = useThree();
 
@@ -29,7 +23,6 @@ export const PingPongBall: React.FC<PingPongBallProps> = ({
       api.position.set(0, 10, 0);
       handleScoreChange('-');
       setIsResettable();
-      setTries();
       setIsGameOver(false);
       setHasStarted();
     } else {
